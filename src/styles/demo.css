@@ -1,0 +1,27 @@
+.datos-del-contacto {
+    font-size: 20px;
+    color: #333;
+}
+
+.img-circle {
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+    margin-right: 80px;
+    margin-left: 50px;
+}
+
+.list-group-item {
+    border: 1px solid #ddd;
+    margin-bottom: 10px;
+}
+
+
+
+button {
+    margin-top: 10px;
+}
+.iconos {
+    margin: 10px;
+   
+}
