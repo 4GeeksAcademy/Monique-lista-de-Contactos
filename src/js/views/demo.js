@@ -1,20 +1,16 @@
-import React, { useState, useEffect, useContext } from "react";
-import { Link, } from "react-router-dom";
+import React, { useEffect, useContext } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPen, faTrashCan, faPhone, faLocationDot, faEnvelope } from '@fortawesome/free-solid-svg-icons';
 import { Context } from "../store/appContext";
 import "../../styles/demo.css";
-import { useNavigate } from "react-router-dom";
+
 
 	export const Demo = () => {
 		const { store, actions } = useContext(Context);
 		const navigate = useNavigate();
 	
-		console.log(store.contacts);  // Verifica si los contactos están llegando al store.
-		console.log("Actions:", actions);
-
-	
-		return (
+			return (
 				<div className="container">
 					<nav className="navbar  mb-3">
 						<div className="d-flex justify-content-end w-100">

@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useState } from "react";
 import "../../styles/home.css";
 import { Link, useParams } from "react-router-dom";
 import { Context } from "../store/appContext";
@@ -17,21 +17,17 @@ export const Home = () => {
     
     const [inputs, setInputs] = useState(initialInputs);
 
-  
-
+        // envia el formulario
         const handleSubmit = (e) => {
-            e.preventDefault();
+            e.preventDefault();//evita el recargo de la pagina
             if (id) {
-              // Si hay un ID, estamos editando el contacto
-              actions.changeContact(id, inputs);
+                actions.changeContact(id, inputs);// Si hay un ID, estamos editando el contacto
             } else {
-              // Si no hay ID, estamos creando un nuevo contacto
-              actions.createContact(inputs);
+                actions.createContact(inputs);// Si no hay ID, estamos creando un nuevo contacto
             }
-          
-          };
+        };
     
-
+          // actualizar inputs cada vez que el usuario escriba algo
         const changeInputs = (e) => {
             setInputs({...inputs, [e.target.name]: e.target.value});
         };
