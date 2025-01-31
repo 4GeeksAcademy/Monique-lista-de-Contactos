@@ -8,14 +8,12 @@ import { useNavigate } from "react-router-dom";
 
 	export const Demo = () => {
 		const { store, actions } = useContext(Context);
-		console.log(store.contacts)
 		const navigate = useNavigate();
-
-		
-		
+	
 		console.log(store.contacts);  // Verifica si los contactos están llegando al store.
-		
-		
+		console.log("Actions:", actions);
+
+	
 		return (
 				<div className="container">
 					<nav className="navbar  mb-3">
@@ -51,14 +49,12 @@ import { useNavigate } from "react-router-dom";
 								<FontAwesomeIcon icon={faPen} onClick={()=> navigate(`/edit/${item.id}`)} className="m-3"/>
 								<FontAwesomeIcon icon={faTrashCan} onClick={()=>actions.deleteContact(item.id)} className="m-3"/>
 								</div>
-						</li>
+							</li>
 						);
 					})
-						
 				) : (<p>No contacts found.</p> // Muestra un mensaje si no hay contactos
 				)}
-					</ul>
-								
-				</div>
-			);
-		};
+			</ul>
+		</div>
+	);
+};

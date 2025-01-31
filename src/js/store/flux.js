@@ -72,18 +72,12 @@ const getState = ({ getStore, getActions, setStore }) => {
 					if (!response.ok) {
 						throw new Error("Error al eliminar el contacto");
 					}
-					 // Verifica si la respuesta tiene cuerpo
-					 if (response.status === 204) {
-						console.log(`Contacto con ID ${id} eliminado correctamente`);
-					  } else {
 					return response.json();
-					  }
 				})
 				.then(() => {
 					//actualizar el store local para eliminar el contacto de la lista
 					const store = getStore();
-					const updatedContacts = store.contacts.filter(contact => contact.id !== id);
-					setStore({ contacts: updatedContacts });
+					setStore({ contacts: store.contacts.filter(contact => contact.id !== id)});
 					console.log(`Contacto con ID ${id} eliminado`);
 				})
 				.then(() => {
