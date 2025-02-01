@@ -1,13 +1,13 @@
 import React, { useContext, useState } from "react";
 import "../../styles/home.css";
-import { Link, useParams } from "react-router-dom";
+import { Link, Navigate, useParams } from "react-router-dom";
 import { Context } from "../store/appContext";
 
 
 export const Home = () => {
     const {id} = useParams(); // obtener el id contacto desde la URL
     const {store, actions} = useContext(Context);
-    
+   
     const initialInputs = {
         name: "",
         email: "",
@@ -16,8 +16,8 @@ export const Home = () => {
         };
     
     const [inputs, setInputs] = useState(initialInputs);
-
-        // envia el formulario
+   
+           // envia el formulario
         const handleSubmit = (e) => {
             e.preventDefault();//evita el recargo de la pagina
             if (id) {
@@ -26,8 +26,8 @@ export const Home = () => {
                 actions.createContact(inputs);// Si no hay ID, estamos creando un nuevo contacto
             }
         };
-    
-          // actualizar inputs cada vez que el usuario escriba algo
+
+        // actualiza inputs cada vez que el usuario escriba algo
         const changeInputs = (e) => {
             setInputs({...inputs, [e.target.name]: e.target.value});
         };
