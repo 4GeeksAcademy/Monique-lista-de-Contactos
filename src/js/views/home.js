@@ -1,12 +1,13 @@
 import React, { useContext, useEffect, useState } from "react";
 import "../../styles/home.css";
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams, useNavigate } from "react-router-dom";
 import { Context } from "../store/appContext";
 
 
 export const Home = () => {
     const {id} = useParams(); // obtener el id contacto desde la URL
     const {store, actions} = useContext(Context);
+    const navigate = useNavigate();
 
    
     const initialInputs = {
@@ -38,6 +39,8 @@ export const Home = () => {
             } else {
                 actions.createContact(inputs);// Si no hay ID, estamos creando un nuevo contacto
             }
+            // redirigir a la pagina de contactos despues de crear o editar
+            navigate("/demo");
         };
 
         // actualiza inputs cada vez que el usuario escriba algo
