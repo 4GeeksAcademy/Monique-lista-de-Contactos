@@ -48,7 +48,7 @@ export const Home = () => {
 
     return (
         <form className="container" onSubmit={handleSubmit}>
-            <h1 className="text-center">{id ? "Edit Contact" : "Add a New Contact"}</h1>
+            <h1 className="text-center">{id ? "Edit Contact" : "Add a New Contact"}</h1>{/*si existe un id abre para editar si no existe abre un contacto nuevo */}
             <div className="m-3">
                 <label htmlFor="username" className="form-label">Full Name</label>
                 <input type="text" value={inputs.name} onChange={changeInputs} name="name" className="form-control" id="name" placeholder="Full Name"/>

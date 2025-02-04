@@ -41,6 +41,7 @@ import "../../styles/demo.css";
 					</nav>
 
 				<ul className="list-group">
+					{/*si es un array y tiene elementos se muestra los contactos usando map, si esta vacio o no es un array mostra no contacts found */}
 				{Array.isArray(store.contacts) && store.contacts.length > 0 ? (
 					store.contacts.map((item, index) => {
 						return (
@@ -62,7 +63,7 @@ import "../../styles/demo.css";
 									</div>
 								</div>
 								<div className="iconos">
-								<FontAwesomeIcon icon={faPen} onClick={()=> navigate(`/edit/${item.id}`)} className="m-3"/>
+								<FontAwesomeIcon icon={faPen} onClick={()=> navigate(`/edit/${item.id}`)} className="m-3"/>{/*para navegar a la pagina de edicion del contacto*/}
 								<FontAwesomeIcon icon={faTrashCan} onClick={()=>handleShow(item.id)} className="m-3"/>
 								</div>
 							</li>
@@ -71,7 +72,7 @@ import "../../styles/demo.css";
 				) : (<p>No contacts found.</p> // Muestra un mensaje si no hay contactos
 				)}
 			</ul>
-				
+				{/*operador ternario si showModal es true abre en modal si es false oculta el modal */}
 			<div className={`modal ${showModal ? 'd-block' : 'd-none'}`} tabindex="-1">
                 <div className="modal-dialog">
                     <div className="modal-content">
