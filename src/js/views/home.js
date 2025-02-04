@@ -1,12 +1,13 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "../../styles/home.css";
-import { Link, Navigate, useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { Context } from "../store/appContext";
 
 
 export const Home = () => {
     const {id} = useParams(); // obtener el id contacto desde la URL
     const {store, actions} = useContext(Context);
+
    
     const initialInputs = {
         name: "",
@@ -16,6 +17,18 @@ export const Home = () => {
         };
     
     const [inputs, setInputs] = useState(initialInputs);
+    
+        //carga los datos del contacto cuando voy editar
+        useEffect(()=> {
+            if(id) {
+                const contactToEdit = store.contacts.find(contact => contact.id == id);
+                if (contactToEdit){
+                    setInputs(contactToEdit);
+                }
+            }else {
+                setInputs(initialInputs); // si no hay id, limpiar el formulario
+            }
+        }, [id, store.contacts])
    
            // envia el formulario
         const handleSubmit = (e) => {
@@ -34,7 +47,7 @@ export const Home = () => {
      
 
     return (
-        <form className="container-fluid" onSubmit={handleSubmit}>
+        <form className="container" onSubmit={handleSubmit}>
             <h1 className="text-center">{id ? "Edit Contact" : "Add a New Contact"}</h1>
             <div className="m-3">
                 <label htmlFor="username" className="form-label">Full Name</label>

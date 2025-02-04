@@ -17,6 +17,7 @@ import "../../styles/demo.css";
 			actions.obtenerContacts(); // Cargar contactos al montar el componente
 		}, []);
 
+			//funcion para el modal
 		const handleClose = () => setShowModal(false);
 		const handleShow = (contactID) => {
 			setContactToDelete(contactID);
@@ -33,7 +34,7 @@ import "../../styles/demo.css";
 				<div className="container">
 					<nav className="navbar  mb-3">
 						<div className="d-flex justify-content-end w-100">
-							<Link to="/">
+							<Link to="/add">
 								<button className="btn btn-success">Add new contact</button>
 							</Link>
 						</div>
@@ -70,7 +71,7 @@ import "../../styles/demo.css";
 				) : (<p>No contacts found.</p> // Muestra un mensaje si no hay contactos
 				)}
 			</ul>
-
+				
 			<div className={`modal ${showModal ? 'd-block' : 'd-none'}`} tabindex="-1">
                 <div className="modal-dialog">
                     <div className="modal-content">
